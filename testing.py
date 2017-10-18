@@ -21,8 +21,9 @@ cyan     = (  0, 255, 255)
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((400, 300))
+    screen = pygame.display.set_mode((400, 400))
     pygame.display.set_caption('Shitty Fruit Ninja')
+    fruits = generate_fruit(screen, 3)
 
     while True:
         for event in pygame.event.get():
@@ -30,16 +31,37 @@ def main():
                 pygame.quit()
                 sys.exit()
 
-        fruits = generate_fruit(screen)
-
         for a in fruits:
             a.draw()
         pygame.display.update()
 
-def generate_fruit(screen):
-    apple1 = Apple(20, 1, (40,60), screen, red)
-    apple2 = Apple(12, 1, (150,120), screen, green)
-    fruits = [apple1, apple2]
+def generate_fruit(screen, n):
+    positions = []
+    radii = []
+    colors = []
+    fruits = []
+
+    start_x = random.sample(range(20, 370), n)
+    start_y = random.sample(range(20, 370), n)
+
+    for b in range(0, n):
+        positions.append((start_x[b], start_y[b]))
+
+    for i in range(0, n):
+        radii.append(random.randint(8, 20))
+
+    set_colors = [red, green, gray]
+    for j in range(0,n):
+        c = random.choice(set_colors)
+        colors.append(c)
+
+    for a in range(0,n):
+        temp_apple = Apple(radii[a], 1, positions[a], screen, colors[a])
+        print(radii[a])
+        print(positions[a])
+        print(colors[a])
+        fruits.append(temp_apple)
+
     return fruits
 
 if __name__ == "__main__":
