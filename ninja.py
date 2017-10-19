@@ -4,7 +4,8 @@
 
 import random, pygame, sys
 from pygame.locals import *
-from fruits import *
+#from fruits import *
+from all_fruits import *
 from Scoring import *
 
 #            R    G    B
