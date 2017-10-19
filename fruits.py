@@ -1,4 +1,4 @@
-import random, pygame, sys
+import random, pygame, sys, math
 from pygame.locals import *
 
 white = (255, 255, 255)
@@ -21,6 +21,23 @@ class Apple(pygame.sprite.Sprite):
 
         self.rect.centerx = self.x + (self.image.get_width()/2)
         self.rect.centery = self.y + (self.image.get_height()/2)
+
+        #figure out direction to fruit to move based on spawn position (left or right)
+        border = screen.get_width()/2
+        #if starts to the left, move over right
+        if (self.x < border):
+            direction = 1
+        #if starts over on the right, move left
+        else:
+            direction = -1
+
+        #determine realistic trajectory angle that will clear minimum height and not exceed maximum
+        min_height = .2*screen.get_height()
+        max_height = .95*screen.get_height()
+
+        distance_from_border = abs(self.x - border)
+        self.min_angle = math.atan(min_height/distance_from_border)
+        self.max_angle = math.atan(max_height/distance_from_border)
 
     def move(self, x, y):
         self.x = x

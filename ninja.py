@@ -1,7 +1,6 @@
-# Memory Puzzle
-# By Al Sweigart al@inventwithpython.com
-# http://inventwithpython.com/pygame
-# Released under a "Simplified BSD" license
+# FRUIT NINJA #
+# AVA LAKMAZAHERI AND EMMA WESTERHOFF #
+# SOFTWARE DESIGN FALL 2017 #
 
 import random, pygame, sys
 from pygame.locals import *
