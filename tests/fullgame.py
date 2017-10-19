@@ -18,7 +18,7 @@ black    = (  0,   0,   0)
 def main():
     pygame.init()
     screen = pygame.display.set_mode((400, 400))
-    pygame.display.set_caption('Shitty Fruit Ninja')
+    pygame.display.set_caption('Fruit Ninja')
     fruits = generate_fruit(screen, 3)
     pygame.mouse.set_visible(False)
     sword = Sword(0,0,screen)
