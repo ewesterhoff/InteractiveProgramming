@@ -22,8 +22,8 @@ cyan     = (  0, 255, 255)
 
 def main():
     pygame.init()
-    screen_width = 400
-    screen_height = 400
+    screen_width = 800
+    screen_height = 500
     screen = pygame.display.set_mode((screen_width, screen_height))
     clock = pygame.time.Clock()
     scoreboard = Scoreboard(screen)
@@ -51,6 +51,7 @@ def main():
 
         for a in fruits:
             a.fall(time_passed)
+            #a.projectile(time_passed)
             a.move(a.x, a.y)
             a.draw()
             if a.checkCollision(sword):
@@ -63,27 +64,15 @@ def main():
         scoreboard.show()
         pygame.display.update()
 
-def generate_apple(screen):
-    apple = Apple(.3, screen)
-    return apple
-
-def generate_banana(screen):
-    banana = Banana(.3, screen)
-    return banana
-
-def generate_strawberry(screen):
-    strawberry = Strawberry(.3, screen)
-    return strawberry
-
 def generate_fruit(screen):
-    n = random.randint(1,1)
+    n = random.randint(1,3)
     print(n)
     if n == 1:
-        return generate_apple(screen)
-    elif n == 2:
-        return generate_banana(screen)
+        return Apple(screen)
+    if n == 2:
+        return Banana(screen)
     else:
-        return generate_strawberry(screen)
+        return Strawberry(screen)
 
 if __name__ == "__main__":
     main()
