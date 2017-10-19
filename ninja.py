@@ -6,6 +6,7 @@
 import random, pygame, sys
 from pygame.locals import *
 from fruits import *
+from Scoring import *
 
 #            R    G    B
 gray     = (100, 100, 100)
@@ -26,6 +27,7 @@ def main():
     screen_height = 400
     screen = pygame.display.set_mode((screen_width, screen_height))
     clock = pygame.time.Clock()
+    scoreboard = Scoreboard(screen)
     pygame.display.set_caption('Fruit Ninja')
     fruits = [generate_fruit(screen)]
     pygame.mouse.set_visible(False)
@@ -54,10 +56,12 @@ def main():
             a.draw()
             if a.checkCollision(sword):
                 print("COLLIDE")
+                scoreboard.fruit_sliced +=1
                 fruits.remove(a)
             elif a.y < (-screen_height+a.image.get_width()):
                 fruits.remove(a)
 
+        scoreboard.show()
         pygame.display.update()
 
 def generate_apple(screen):
@@ -65,22 +69,22 @@ def generate_apple(screen):
     return apple
 
 def generate_banana(screen):
-    start_x = random.randint(20, 370)
-    start_y = random.randint(20, 370)
-
-    position = (start_x, start_y)
-    radius = random.randint(8,20)
-    color = random.choice([yellow, green])
-    banana = Banana(radius, .3, position, screen, color)
-
+    banana = Banana(.3, screen)
     return banana
 
+def generate_strawberry(screen):
+    strawberry = Strawberry(.3, screen)
+    return strawberry
+
 def generate_fruit(screen):
-    n = random.randint(1,2)
+    n = random.randint(1,1)
+    print(n)
     if n == 1:
         return generate_apple(screen)
+    elif n == 2:
+        return generate_banana(screen)
     else:
-        return generate_apple(screen)
+        return generate_strawberry(screen)
 
 if __name__ == "__main__":
     main()
