@@ -54,19 +54,18 @@ class Fruit(pygame.sprite.Sprite):
         self.rect.centerx = x + (self.image.get_width()/2)
         self.rect.centery = y + (self.image.get_height()/2)
 
-    def fall(self, time_passed):
+    def toss(self, time_passed):
         #self.y -= self.speed*time_passed
         self.total_time = self.total_time+time_passed
-        self.time = self.total_time/300
+        self.time = self.total_time/500
 
         x_speed = random.randint(0,25)
         add_x = math.sin(self.time) * x_speed
         self.x += self.direction*add_x
 
-        y_speed = random.randint(120,170)
-        add_y = math.cos(self.time) * self.speed*y_speed
+        y_speed = random.randint(20,40)
+        add_y = math.cos(self.time) *y_speed
         self.y -= add_y
-
 
     def draw(self):
         self.screen.blit(self.image, (self.x, self.y))
@@ -75,6 +74,13 @@ class Fruit(pygame.sprite.Sprite):
         # returns True or False if apple has collided with other object
         col = pygame.sprite.collide_rect(self, other)
         return col
+
+    def fall(self, time_passed):
+        add_x = .15*time_passed
+        self.x += self.direction*add_x
+
+        add_y = .7*time_passed
+        self.y += add_y
 
 class Apple(Fruit):
     def __init__(self, screen):
@@ -91,6 +97,47 @@ class Strawberry(Fruit):
         # Call the parent class (Fruit) constructor
         super().__init__(screen, 'strawberry.png')
 
+class Half_Apple1(Fruit):
+    def __init__(self, screen, start_x, start_y):
+        # Call the parent class (Fruit) constructor
+        super().__init__(screen, 'apple_half1.png')
+        self.x = start_x
+        self.y = start_y
+
+class Half_Apple2(Fruit):
+    def __init__(self, screen, start_x, start_y):
+        # Call the parent class (Fruit) constructor
+        super().__init__(screen, 'apple_half2.png')
+        self.x = start_x
+        self.y = start_y
+
+class Half_Banana1(Fruit):
+    def __init__(self, screen, start_x, start_y):
+        # Call the parent class (Fruit) constructor
+        super().__init__(screen, 'ban2.png')
+        self.x = start_x
+        self.y = start_y
+
+class Half_Banana2(Fruit):
+    def __init__(self, screen, start_x, start_y):
+        # Call the parent class (Fruit) constructor
+        super().__init__(screen, 'ban1.png')
+        self.x = start_x
+        self.y = start_y
+
+class Half_Strawberry1(Fruit):
+    def __init__(self, screen, start_x, start_y):
+        # Call the parent class (Fruit) constructor
+        super().__init__(screen, 'straw1.png')
+        self.x = start_x
+        self.y = start_y
+
+class Half_Strawberry2(Fruit):
+    def __init__(self, screen, start_x, start_y):
+        # Call the parent class (Fruit) constructor
+        super().__init__(screen, 'straw2.png')
+        self.x = start_x
+        self.y = start_y
 
 class Sword(pygame.sprite.Sprite):
     def __init__(self, x, y, screen):
