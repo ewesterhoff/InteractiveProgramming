@@ -57,13 +57,13 @@ class Fruit(pygame.sprite.Sprite):
     def toss(self, time_passed):
         #self.y -= self.speed*time_passed
         self.total_time = self.total_time+time_passed
-        self.time = self.total_time/500
+        self.time = self.total_time/800
 
         x_speed = random.randint(0,25)
         add_x = math.sin(self.time) * x_speed
         self.x += self.direction*add_x
 
-        y_speed = random.randint(20,40)
+        y_speed = random.randint(30,43)
         add_y = math.cos(self.time) *y_speed
         self.y -= add_y
 
