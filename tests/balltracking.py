@@ -13,9 +13,11 @@ args = vars(ap.parse_args())
 
 # define the lower and upper boundaries of the target color, then initialize the
 # list of tracked points
-color_lowbound = (124, 58, 65)
+#color_lowbound = (124, 58, 65)
 #r: (0, 77, 141) #y: (0, 148, 0)
-color_upbound = (255, 189, 255) #(210, 199, 255) # (86, 255, 255)
+#color_upbound = (255, 189, 255) #(210, 199, 255) # (86, 255, 255)
+color_lowbound = (14, 56, 26) #(9, 129, 126)
+color_upbound = (245, 255, 231) #(28, 255, 182)
 
 pts = deque(maxlen=args["buffer"])
 
@@ -32,7 +34,7 @@ while True:
 	# 		pass
 	# grab the current frame
 	(grabbed, frame) = camera.read()
-	frame = imutils.resize(frame, width=200)
+	frame = imutils.resize(frame, width=600)
 	# blurred = cv2.GaussianBlur(frame, (11, 11), 0)
 
 	# construct a mask for the color, then perform a series of dilations and erosions
