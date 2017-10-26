@@ -22,20 +22,6 @@ isBgCaptured = 0   # bool, whether the background captured
 center = (0,0)
 OBJMOTION = pygame.USEREVENT+1
 
-def initialize():
-    pygame.init()
-    screen = pygame.display.set_mode((screen_width, screen_height))
-
-    scoreboard = Scoreboard(screen)
-    pygame.display.set_caption('Fruit Ninja')
-    pygame.mouse.set_visible(False)
-
-    clock = pygame.time.Clock()
-
-    camera, bgModel = get_background()
-
-    return screen, scoreboard, clock, camera, bgModel
-
 def generate_fruit(screen):
     n = random.randint(1,3)
     if n == 1:
@@ -127,7 +113,6 @@ def get_background():
 
 
 def main():
-    #screen, scoreboard, clock, camera, bgModel = initialize()
     pygame.init()
     screen = pygame.display.set_mode((screen_width, screen_height))
 
@@ -173,16 +158,12 @@ def main():
             a.move(a.x, a.y)
             a.draw()
             if a.checkCollision(sword):
-                print("COLLIDE")
                 scoreboard.fruit_sliced +=1
                 halves = half_fruit(screen, a)
                 for half in halves:
                     fruit_parts.append(half)
-                print(fruit_parts)
                 fruits.remove(a)
             elif a.y > (screen_height+a.image.get_width()):
-                print('missed')
-                print(scoreboard.fruit_missed)
                 scoreboard.fruit_missed +=1
                 fruits.remove(a)
 
