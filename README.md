@@ -9,11 +9,12 @@ In this immersive gaming experience, Fruit Ninja moves off of your phone screen 
 
 ### Installing Packages
 This game makes use of OpenCV and Pygame libraries. For everything you need, run the following. <br />
-<br />
+
 pip install cv2, pygame, numpy, imutils, argparse
 
 ### Downloading Files
 Download the following files, as well as all fruit images, from the repository: <br />
+
 ninja.py: main game file <br />
 all_fruits.py: holds fruit class and apple, banana, strawberry subclasses <br />
 Scoring.py: holds scoreboard class <br />
