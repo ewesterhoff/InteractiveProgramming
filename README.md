@@ -28,3 +28,6 @@ The game requires a still image from the webcam to begin hand detection. A camer
 When the image has been taken, you're ready to play! Navigate to the game screen and slice the fruit by gesturing. Try to keep the rest of the background as static as possible for the best results (i.e., don't move your computer, have people walking behind you, etc.) <br />
 
 Enjoy!
+
+## Links:
+[Project Reflection](Reflection.pdf)
